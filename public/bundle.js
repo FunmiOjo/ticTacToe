@@ -231,7 +231,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Cell).call(this));
     _this.state = {
-      marker: ''
+      marker: '-'
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
@@ -251,6 +251,7 @@ function (_Component) {
       }
 
       this.props.markCell(this.props.position);
+      this.props.switchPlayer();
     }
   }, {
     key: "render",
@@ -275,6 +276,9 @@ var mapDispatch = function mapDispatch(dispatch) {
   return {
     markCell: function markCell(position) {
       return dispatch(Object(_store_reducer__WEBPACK_IMPORTED_MODULE_2__["markedCell"])(position));
+    },
+    switchPlayer: function switchPlayer() {
+      return dispatch(Object(_store_reducer__WEBPACK_IMPORTED_MODULE_2__["switchedPlayer"])());
     }
   };
 };
@@ -335,12 +339,13 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************!*\
   !*** ./client/store/reducer.js ***!
   \*********************************/
-/*! exports provided: markedCell, default */
+/*! exports provided: markedCell, switchedPlayer, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "markedCell", function() { return markedCell; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "switchedPlayer", function() { return switchedPlayer; });
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./client/utils.js");
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
@@ -353,10 +358,16 @@ var initialState = {
 
 };
 var MARKED_CELL = 'MARKED_CELL';
+var SWITCHED_PLAYER = 'SWITCHED_PLAYER';
 var markedCell = function markedCell(position) {
   return {
     type: MARKED_CELL,
     position: position
+  };
+};
+var switchedPlayer = function switchedPlayer() {
+  return {
+    type: SWITCHED_PLAYER
   };
 };
 
@@ -375,6 +386,11 @@ var reducer = function reducer() {
 
           return cell;
         })
+      });
+
+    case SWITCHED_PLAYER:
+      return _objectSpread({}, state, {
+        activePlayer: state.activePlayer === 1 ? 2 : 1
       });
 
     default:

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { markedCell } from '../store/reducer'
+import { markedCell, switchedPlayer } from '../store/reducer'
 
 class Cell extends Component {
   constructor() {
     super()
     this.state = {
-      marker: '',
+      marker: '-',
     }
     this.handleClick = this.handleClick.bind(this)
   }
@@ -18,6 +18,7 @@ class Cell extends Component {
       this.setState({ marker: 'O' })
     }
     this.props.markCell(this.props.position)
+    this.props.switchPlayer()
   }
 
   render() {
@@ -38,8 +39,10 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     markCell: position => dispatch(markedCell(position)),
+    switchPlayer: () => dispatch(switchedPlayer()),
   }
 }
+
 export default connect(
   mapState,
   mapDispatch
