@@ -6,8 +6,8 @@ const initialState = {
 }
 
 // actions
-const MARKED_CELL = 'MARKED_CELL'
-const SWITCHED_PLAYER = 'SWITCHED_PLAYER'
+export const MARKED_CELL = 'MARKED_CELL'
+export const SWITCHED_PLAYER = 'SWITCHED_PLAYER'
 
 export const markedCell = position => {
   return {

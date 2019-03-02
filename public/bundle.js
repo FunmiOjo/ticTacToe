@@ -339,11 +339,13 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************!*\
   !*** ./client/store/reducer.js ***!
   \*********************************/
-/*! exports provided: markedCell, switchedPlayer, default */
+/*! exports provided: MARKED_CELL, SWITCHED_PLAYER, markedCell, switchedPlayer, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MARKED_CELL", function() { return MARKED_CELL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SWITCHED_PLAYER", function() { return SWITCHED_PLAYER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "markedCell", function() { return markedCell; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "switchedPlayer", function() { return switchedPlayer; });
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./client/utils.js");
@@ -377,6 +379,7 @@ var reducer = function reducer() {
 
   switch (action.type) {
     case MARKED_CELL:
+      console.log(state, action);
       return _objectSpread({}, state, {
         board: state.board.map(function (cell) {
           if (cell.position === action.position) {
