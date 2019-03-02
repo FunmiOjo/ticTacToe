@@ -39,6 +39,7 @@
     "webpack-cli": "^3.2.3"
   },
   "devDependencies": {
-    "@babel/register": "^7.0.0"
+    "@babel/register": "^7.0.0",
+    "redux-testkit": "^1.0.6"
   }
 }
