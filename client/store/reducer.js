@@ -8,6 +8,7 @@ const TIED = 'TIED'
 const initialState = {
   board: createBoard(),
   activePlayer: 1,
+  winningPlayer: 0,
   gameStatus: ONGOING,
 }
 
@@ -15,6 +16,7 @@ const initialState = {
 export const MARKED_CELL = 'MARKED_CELL'
 export const SWITCHED_PLAYER = 'SWITCHED_PLAYER'
 export const EVALUATED_BOARD = 'EVALUATED_BOARD'
+export const RESET_GAME = 'RESET_GAME'
 
 export const markedCell = position => {
   return {
@@ -36,9 +38,9 @@ export const evaluatedBoard = gameStatus => {
   }
 }
 
-export const getBoardEvaluation = (board, activePlayer) => {
-  return dispatch => {
-    dispatch(evaluatedBoard(evaluateBoard(board, activePlayer)))
+export const resetGame = () => {
+  return {
+    type: RESET_GAME,
   }
 }
 
@@ -64,6 +66,15 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         gameStatus: action.gameStatus,
+        winningPlayer: state.activePlayer,
+      }
+    case RESET_GAME:
+      return {
+        ...state,
+        board: createBoard(),
+        activePlayer: 1,
+        winningPlayer: 0,
+        gameStatus: ONGOING,
       }
     default:
       return state

@@ -8,9 +8,14 @@ describe('Cell component', () => {
   let wrapper
   const mockMarkCell = sinon.spy()
   const mockSwitchPlayer = sinon.spy()
+  const mockEvaluateBoard = sinon.spy()
   beforeEach('set up wrapper', () => {
     wrapper = shallow(
-      <Cell markCell={mockMarkCell} switchPlayer={mockSwitchPlayer} />
+      <Cell
+        markCell={mockMarkCell}
+        switchPlayer={mockSwitchPlayer}
+        evaluateBoard={mockEvaluateBoard}
+      />
     )
   })
 
@@ -26,5 +31,6 @@ describe('Cell component', () => {
     div.simulate('click')
     expect(mockMarkCell.called).to.equal(true)
     expect(mockSwitchPlayer.called).to.equal(true)
+    expect(mockEvaluateBoard.called).to.equal(true)
   })
 })

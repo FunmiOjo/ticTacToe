@@ -18,6 +18,7 @@ class Cell extends Component {
       this.setState({ marker: 'O' })
     }
     this.props.markCell(this.props.position)
+    this.props.evaluateBoard()
     this.props.switchPlayer()
   }
 
@@ -39,7 +40,6 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     markCell: position => dispatch(markedCell(position)),
-    switchPlayer: () => dispatch(switchedPlayer()),
   }
 }
 

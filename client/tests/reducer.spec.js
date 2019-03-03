@@ -1,5 +1,9 @@
 import { expect } from 'chai'
-import reducer, { MARKED_CELL, SWITCHED_PLAYER } from '../store/reducer'
+import reducer, {
+  MARKED_CELL,
+  RESET_GAME,
+  SWITCHED_PLAYER,
+} from '../store/reducer'
 import { createBoard } from '../utils'
 
 describe('reducer', () => {
@@ -61,6 +65,34 @@ describe('reducer', () => {
       }
       const action = { type: 'EVALUATED_BOARD', gameStatus: 'WON' }
       expect(reducer(initialState, action).gameStatus).to.equal('WON')
+    })
+
+    it('should handle RESET_GAME action', () => {
+      const initialState = {
+        board: createBoard(),
+        activePlayer: 1,
+        winningPlayer: 0,
+        gameStatus: 'ONGOING',
+      }
+
+      const resultState = {
+        board: createBoard(),
+        activePlayer: 1,
+        winningPlayer: 0,
+        gameStatus: 'ONGOING',
+      }
+
+      let newState = reducer(
+        { ...initialState },
+        { type: MARKED_CELL, position: 0 }
+      )
+      newState = reducer(newState, { type: MARKED_CELL, position: 8 })
+      newState = reducer(newState, {
+        type: 'EVALUATED_BOARD',
+        gameStatus: 'WON',
+      })
+
+      expect(reducer(newState, { type: RESET_GAME })).to.deep.equal(resultState)
     })
   })
 
