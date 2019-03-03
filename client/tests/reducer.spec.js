@@ -52,6 +52,16 @@ describe('reducer', () => {
         resultingBoard
       )
     })
+
+    it('should handle EVALUATED_BOARD action', () => {
+      const initialState = {
+        gameStatus: 'ONGOING',
+        board: createBoard(),
+        activePlayer: 1,
+      }
+      const action = { type: 'EVALUATED_BOARD', gameStatus: 'WON' }
+      expect(reducer(initialState, action).gameStatus).to.equal('WON')
+    })
   })
 
   describe('active player state', () => {

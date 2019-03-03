@@ -4,6 +4,7 @@ import {
   cellNotPlayed,
   cellPlayedByOpponent,
   columnWin,
+  evaluateBoard,
   evaluateDiagonalWin,
   evaluateTie,
   evaluateWin,
@@ -136,6 +137,14 @@ describe('game evaluation', () => {
   describe('evaluateTie', () => {
     it('correctly evaluates whether the board is tied', () => {
       expect(evaluateTie(tiedBoard)).to.equal(true)
+    })
+  })
+
+  describe('evaluateBoard', () => {
+    it('correctly evaluates the game status', () => {
+      expect(evaluateBoard(boardWithDiagonalWin1, 1)).to.equal('WON')
+      expect(evaluateBoard(tiedBoard, 1)).to.equal('TIED')
+      expect(evaluateBoard(boardWithoutColumnWin1, 1)).to.equal('ONGOING')
     })
   })
 })

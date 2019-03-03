@@ -111,3 +111,18 @@ export const evaluateTie = board => {
     allCellsPlayed(board) && !evaluateWin(board, 1) && !evaluateWin(board, 2)
   )
 }
+
+const ONGOING = 'ONGOING'
+const WON = 'WON'
+const TIED = 'TIED'
+
+export const evaluateBoard = (board, player) => {
+  if (evaluateWin(board, player)) {
+    return WON
+  }
+
+  if (evaluateTie(board)) {
+    return TIED
+  }
+  return ONGOING
+}
