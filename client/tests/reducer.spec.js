@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import reducer, { MARKED_CELL } from '../store/reducer'
+import reducer, { MARKED_CELL, SWITCHED_PLAYER } from '../store/reducer'
 import { createBoard } from '../utils'
 
 describe('reducer', () => {
@@ -53,4 +53,15 @@ describe('reducer', () => {
       )
     })
   })
-})
+
+  describe('active player state', () => {
+    it('should handle SWITCHED_PLAYER action', () => {
+      const action = { type: SWITCHED_PLAYER }
+      const initialState = { board: createBoard(), activePlayer: 1 }
+      const secondState = { board: createBoard(), activePlayer: 2 }
+      const thirdState = { board: createBoard(), activePlayer: 1 }
+      expect(reducer(initialState, action)).to.deep.equal(secondState)
+      expect(reducer(secondState, action)).to.deep.equal(thirdState)
+    })
+  })
+}) // describe reducer
