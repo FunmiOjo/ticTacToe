@@ -4,6 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
+    "build-client": "webpack",
     "test": "mocha -w ./client/tests --require @babel/register --require ./client/tests/setup.js",
     "start": "node ./server",
     "start-dev": "webpack -w & nodemon ./server"
