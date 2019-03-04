@@ -7,11 +7,15 @@ class GameResult extends Component {
   }
 
   render() {
-    return (
-      <h2 id="resultMessage">
-        Player {this.props.winner} {this.props.gameResult.toLowerCase()}
-      </h2>
-    )
+    if (this.props.gameResult === 'TIED') {
+      return <h2 id="resultMessage">You tied</h2>
+    } else {
+      return (
+        <h2 id="resultMessage">
+          Player {this.props.winner} {this.props.gameResult.toLowerCase()}
+        </h2>
+      )
+    }
   }
 }
 

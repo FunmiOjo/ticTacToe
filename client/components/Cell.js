@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { markedCell, switchedPlayer } from '../store/reducer'
+import { cellNotPlayed } from '../gameEvaluation'
 
 class Cell extends Component {
   constructor() {
@@ -12,14 +13,16 @@ class Cell extends Component {
   }
 
   handleClick() {
-    if (this.props.activePlayer === 1) {
-      this.setState({ marker: 'X' })
-    } else if (this.props.activePlayer === 2) {
-      this.setState({ marker: 'O' })
+    if (this.props.played === false) {
+      if (this.props.activePlayer === 1) {
+        this.setState({ marker: 'X' })
+      } else if (this.props.activePlayer === 2) {
+        this.setState({ marker: 'O' })
+      }
+      this.props.markCell(this.props.position)
+      this.props.evaluateBoard()
+      this.props.switchPlayer()
     }
-    this.props.markCell(this.props.position)
-    this.props.evaluateBoard()
-    this.props.switchPlayer()
   }
 
   render() {
