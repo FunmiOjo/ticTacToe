@@ -15,13 +15,14 @@ describe('Cell component', () => {
         markCell={mockMarkCell}
         switchPlayer={mockSwitchPlayer}
         evaluateBoard={mockEvaluateBoard}
+        played={false}
       />
     )
   })
 
   it('displays a game token', () => {
     const text = wrapper.text()
-    expect(text).to.be.oneOf(['-', 'X', 'O'])
+    expect(text).to.be.oneOf(['', 'X', 'O'])
   })
 
   it('handles clicks properly', () => {

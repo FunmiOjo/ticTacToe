@@ -31,6 +31,6 @@ describe('PlayerLabel component', () => {
   })
 
   it('should display its own player', () => {
-    expect(wrapper.childAt(0).text()).to.equal('Player 1')
+    expect(wrapper.childAt(0).text()).to.equal('Player 1 - X')
   })
 })
