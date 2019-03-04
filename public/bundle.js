@@ -269,7 +269,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Cell).call(this));
     _this.state = {
-      marker: '-'
+      marker: ''
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
@@ -344,7 +344,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var FinishedGame = function FinishedGame() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GameResult__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ResetGameButton__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "finished"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GameResult__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ResetGameButton__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (FinishedGame);
@@ -526,7 +528,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var OngoingGame = function OngoingGame() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Title__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlayerLabelSection__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Board__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ongoing"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Title__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlayerLabelSection__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Board__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (OngoingGame);
@@ -548,7 +552,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var PlayerLabel = function PlayerLabel(props) {
   var className = props.ownPlayer === props.activePlayer ? 'active' : 'inactive';
-  var innerText = "Player ".concat(props.ownPlayer);
+  var innerText = "Player ".concat(props.ownPlayer, " - ").concat(props.ownPlayer === 1 ? 'X' : 'O');
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: className
   }, innerText);
@@ -607,7 +611,9 @@ function (_Component) {
   _createClass(PlayerLabelSection, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlayerLabel__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "playerlabel-section"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlayerLabel__WEBPACK_IMPORTED_MODULE_1__["default"], {
         ownPlayer: 1,
         activePlayer: this.props.activePlayer
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlayerLabel__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -714,7 +720,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Title = function Title() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Tic Tac Toe");
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "title"
+  }, "TIC TAC TOE");
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Title);

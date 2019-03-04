@@ -5,7 +5,7 @@ import Board from './Board'
 
 const OngoingGame = () => {
   return (
-    <div>
+    <div className="ongoing">
       <Title />
       <PlayerLabelSection />
       <Board />

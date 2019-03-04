@@ -7,7 +7,7 @@ class Cell extends Component {
   constructor() {
     super()
     this.state = {
-      marker: '-',
+      marker: '',
     }
     this.handleClick = this.handleClick.bind(this)
   }

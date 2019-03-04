@@ -9,7 +9,7 @@ class PlayerLabelSection extends Component {
 
   render() {
     return (
-      <div>
+      <div className="playerlabel-section">
         <PlayerLabel ownPlayer={1} activePlayer={this.props.activePlayer} />
         <PlayerLabel ownPlayer={2} activePlayer={this.props.activePlayer} />
       </div>

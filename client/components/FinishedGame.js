@@ -4,7 +4,7 @@ import ResetGameButton from './ResetGameButton'
 
 const FinishedGame = () => {
   return (
-    <div>
+    <div className="finished">
       <GameResult />
       <ResetGameButton />
     </div>
